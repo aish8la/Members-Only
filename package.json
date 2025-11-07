@@ -1,0 +1,46 @@
+{
+  "name": "members-only",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --watch --env-file=.env src/app.ts",
+    "start": "node --env-file=.env dist/app.js",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aish8la/Members-Only.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aish8la/Members-Only/issues"
+  },
+  "homepage": "https://github.com/aish8la/Members-Only#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@tsconfig/node-lts": "^22.0.2",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.3"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": [
+      "eslint --fix .",
+      "prettier --write ."
+    ]
+  }
+}
