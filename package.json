@@ -28,6 +28,8 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@tsconfig/node-lts": "^22.0.2",
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.0",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
@@ -42,5 +44,8 @@
       "eslint --fix .",
       "prettier --write ."
     ]
+  },
+  "dependencies": {
+    "express": "^5.1.0"
   }
 }
