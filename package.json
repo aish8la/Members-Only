@@ -28,8 +28,12 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@tsconfig/node-lts": "^22.0.2",
+    "@types/connect-pg-simple": "^7.0.3",
     "@types/express": "^5.0.5",
+    "@types/express-session": "^1.18.2",
     "@types/node": "^24.10.0",
+    "@types/passport": "^1.0.17",
+    "@types/passport-local": "^1.0.38",
     "@types/pg": "^8.15.6",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
@@ -47,7 +51,13 @@
     ]
   },
   "dependencies": {
+    "argon2": "^0.44.0",
+    "connect-pg-simple": "^10.0.0",
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
     "pg": "^8.16.3"
   }
 }
