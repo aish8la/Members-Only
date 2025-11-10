@@ -47,3 +47,18 @@ export const getUser = async (userId: number) => {
 
   return result.rows[0];
 };
+
+export const getAllUsers = async () => {
+  const getAllUsersSQL = `
+      SELECT id,
+        first_name,
+        last_name,
+        email_address,
+        is_member,
+        is_admin,
+        join_timestamp
+      FROM users;`;
+  const result = await pool.query(getAllUsersSQL);
+
+  return result.rows;
+};
