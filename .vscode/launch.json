@@ -12,6 +12,15 @@
       "program": "${workspaceFolder}/src/app.ts",
       "runtimeExecutable": "tsx",
       "runtimeArgs": ["--env-file=.env"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "file",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${file}",
+      "runtimeExecutable": "tsx",
+      "runtimeArgs": ["--env-file=.env"]
     }
   ]
 }
