@@ -34,3 +34,16 @@ export const addUser = async ({
 
   return result;
 };
+
+export const getUser = async (userId: number) => {
+  const getUserSQL = {
+    text: `
+      SELECT *
+      FROM users
+      WHERE id=$1;`,
+    values: [userId],
+  };
+  const result = await pool.query(getUserSQL);
+
+  return result.rows[0];
+};
