@@ -80,3 +80,16 @@ export const isEmailUsed = async (email: string) => {
   const result = await pool.query(getEmail);
   return result?.rowCount !== null && 0 < result?.rowCount;
 };
+
+export const getUserByEmail = async (email: string) => {
+  const getUserSQL = {
+    text: `
+      SELECT *
+      FROM users
+      WHERE id=$1;`,
+    values: [email],
+  };
+  const result = await pool.query(getUserSQL);
+
+  return result.rows[0];
+};
