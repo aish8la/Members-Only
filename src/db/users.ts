@@ -1,14 +1,5 @@
 import pool from "../config/database.js";
 
-type User = {
-  emailAddress: string;
-  firstName: string;
-  lastName: string | null;
-  password: string;
-  isMember: boolean;
-  isAdmin: boolean;
-};
-
 export const addUser = async ({
   emailAddress,
   firstName,
@@ -16,7 +7,7 @@ export const addUser = async ({
   password,
   isMember,
   isAdmin,
-}: User) => {
+}: NewUser) => {
   const addUserSQL = {
     text: `INSERT INTO users (
         email_address,
@@ -39,34 +30,42 @@ export const getUserById = async (userId: number) => {
   const getUserSQL = {
     text: `
       SELECT id,
-        first_name,
-        last_name,
-        email_address,
-        is_member,
-        is_admin,
-        join_timestamp
+        first_name AS firstName,
+        last_name AS lastName,
+        email_address AS emailAddress,
+        is_member AS isMember,
+        is_admin AS isAdmin,
+        join_timestamp AS joinTimestamp
       FROM users
       WHERE id=$1;`,
     values: [userId],
   };
-  const result = await pool.query(getUserSQL);
+  const { rows } = await pool.query<SafeUser>(getUserSQL);
 
-  return result.rows[0];
+  if (!rows[0]) {
+    return null;
+  }
+
+  return rows[0];
 };
 
 export const getAllUsers = async () => {
   const getAllUsersSQL = `
       SELECT id,
-        first_name,
-        last_name,
-        email_address,
-        is_member,
-        is_admin,
-        join_timestamp
+        first_name AS firstName,
+        last_name AS lastName,
+        email_address AS emailAddress,
+        is_member AS isMember,
+        is_admin AS isAdmin,
+        join_timestamp AS joinTimestamp
       FROM users;`;
-  const result = await pool.query(getAllUsersSQL);
+  const { rows } = await pool.query<SafeUser>(getAllUsersSQL);
 
-  return result.rows;
+  if (!rows[0]) {
+    return null;
+  }
+
+  return rows;
 };
 
 export const isEmailUsed = async (email: string) => {
@@ -84,12 +83,23 @@ export const isEmailUsed = async (email: string) => {
 export const getUserByEmail = async (email: string) => {
   const getUserSQL = {
     text: `
-      SELECT *
+      SELECT id,
+        first_name AS firstName,
+        last_name AS lastName,
+        email_address AS emailAddress,
+        password,
+        is_member AS isMember,
+        is_admin AS isAdmin,
+        join_timestamp AS joinTimestamp
       FROM users
       WHERE id=$1;`,
     values: [email],
   };
-  const result = await pool.query(getUserSQL);
+  const { rows } = await pool.query<IUser>(getUserSQL);
 
-  return result.rows[0];
+  if (!rows[0]) {
+    return null;
+  }
+
+  return rows[0];
 };
