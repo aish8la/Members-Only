@@ -92,7 +92,7 @@ export const getUserByEmail = async (email: string) => {
         is_admin AS isAdmin,
         join_timestamp AS joinTimestamp
       FROM users
-      WHERE id=$1;`,
+      WHERE email_address=$1;`,
     values: [email],
   };
   const { rows } = await pool.query<IUser>(getUserSQL);
