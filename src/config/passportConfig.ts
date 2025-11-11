@@ -5,10 +5,10 @@ import * as argon2 from "argon2";
 export const localStrategy = new Strategy(async (username, password, done) => {
   try {
     const user = await getUserByEmail(username);
-    const isMatched = await argon2.verify(
-      user?.password ?? process.env.FALLBACK_HASH,
-      password
-    );
+    const hashedPassword = user
+      ? user.password
+      : await argon2.hash(process.env.FALLBACK_HASH_GEN_STRING);
+    const isMatched = await argon2.verify(hashedPassword, password);
 
     if (user && isMatched) {
       return done(null, user);
