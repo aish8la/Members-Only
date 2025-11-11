@@ -12,7 +12,7 @@ export const ENV = z.object({
 
 ENV.parse(process.env);
 
-/* eslint-disable @typescript-eslint/no-namespace, @typescript-eslint/no-empty-object-type */
+/* eslint-disable @typescript-eslint/no-namespace */
 declare global {
   namespace NodeJS {
     interface ProcessEnv extends z.infer<typeof ENV> {}
