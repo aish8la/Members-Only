@@ -35,10 +35,16 @@ export const addUser = async ({
   return result;
 };
 
-export const getUser = async (userId: number) => {
+export const getUserById = async (userId: number) => {
   const getUserSQL = {
     text: `
-      SELECT *
+      SELECT id,
+        first_name,
+        last_name,
+        email_address,
+        is_member,
+        is_admin,
+        join_timestamp
       FROM users
       WHERE id=$1;`,
     values: [userId],
