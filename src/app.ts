@@ -5,6 +5,7 @@ import express from "express";
 import passport from "passport";
 import session from "./config/session.js";
 import { localStrategy } from "./config/passportConfig.js";
+import router from "./routes/index.js";
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 passport.use(localStrategy);
 app.use(session);
 app.use(passport.session());
+app.use(router);
 
 const PORT = Number(process.env.PORT) || 3000;
 
