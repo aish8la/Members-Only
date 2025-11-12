@@ -17,6 +17,9 @@
       </div>
       <button type="submit">Login</button>
       <a href="/sign-up">Signup</a>
+      <% if (locals.errors) { %>
+        <%= errors.message %>
+      <% } %>
     </form>
   </body>
 </html>
