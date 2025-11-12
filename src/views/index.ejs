@@ -7,7 +7,7 @@
 </head>
 <body>
   <% if( locals.isAuthenticated ) { %>
-    Hello <%= locals.currentUser.firstName %>
+    Hello <%= locals.currentUser.firstname %>
   <% } else { %>
     You are not logged in.
     <a href="/log-in">Log In</a>

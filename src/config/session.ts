@@ -3,7 +3,7 @@ import connectPgSimple from "connect-pg-simple";
 import pool from "./database.js";
 
 const PGStore = connectPgSimple(session);
-const isProduction = process.env.NODE_ENV == "production";
+const isProduction = process.env.NODE_ENV === "production";
 
 export default session({
   secret: process.env.SESSION_SECRET || "secret",
