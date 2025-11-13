@@ -9,3 +9,24 @@ export const snakeCaseToCamelCase = (text: string) => {
     })
     .join("");
 };
+
+export const keysToCamelCase = (obj: unknown): unknown => {
+  if (obj === null || typeof obj !== "object") {
+    return obj;
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map((e) => keysToCamelCase(e));
+  }
+
+  if (Object.prototype.toString.call(obj) === "[object Object]") {
+    const entries = Object.entries(obj);
+    const camelCasedEntries = entries.map(([key, value]) => {
+      const camelCasedKey = snakeCaseToCamelCase(key);
+      const newValue = keysToCamelCase(value);
+      return [camelCasedKey, newValue];
+    });
+    return Object.fromEntries(camelCasedEntries);
+  }
+  return obj;
+};
