@@ -30,12 +30,12 @@ export const getUserById = async (userId: number) => {
   const getUserSQL = {
     text: `
       SELECT id,
-        first_name AS firstName,
-        last_name AS lastName,
-        email_address AS emailAddress,
-        is_member AS isMember,
-        is_admin AS isAdmin,
-        join_timestamp AS joinTimestamp
+        first_name,
+        last_name,
+        email_address,
+        is_member,
+        is_admin,
+        join_timestamp
       FROM users
       WHERE id=$1;`,
     values: [userId],
@@ -52,12 +52,12 @@ export const getUserById = async (userId: number) => {
 export const getAllUsers = async () => {
   const getAllUsersSQL = `
       SELECT id,
-        first_name AS firstName,
-        last_name AS lastName,
-        email_address AS emailAddress,
-        is_member AS isMember,
-        is_admin AS isAdmin,
-        join_timestamp AS joinTimestamp
+        first_name,
+        last_name,
+        email_address,
+        is_member,
+        is_admin,
+        join_timestamp
       FROM users;`;
   const { rows } = await pool.query<SafeUser>(getAllUsersSQL);
 
@@ -84,13 +84,13 @@ export const getUserByEmail = async (email: string) => {
   const getUserSQL = {
     text: `
       SELECT id,
-        first_name AS firstName,
-        last_name AS lastName,
-        email_address AS emailAddress,
+        first_name,
+        last_name,
+        email_address,
         password,
-        is_member AS isMember,
-        is_admin AS isAdmin,
-        join_timestamp AS joinTimestamp
+        is_member,
+        is_admin,
+        join_timestamp
       FROM users
       WHERE email_address=$1;`,
     values: [email],
