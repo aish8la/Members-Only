@@ -8,9 +8,13 @@
 <body>
   <% if( locals.isAuthenticated ) { %>
     Hello <%= locals.currentUser.firstName %>
+    <form action="/auth/logout" method="POST">
+      <button>Logout</button>
+
+    </form>
   <% } else { %>
     You are not logged in.
-    <a href="/log-in">Log In</a>
+    <a href="/auth/login">Log In</a>
   <% } %>
 </body>
 </html>

@@ -3,10 +3,8 @@ const router = express.Router();
 
 import rootRouter from "./root.js";
 import authRouter from "./auth.js";
-import signupRouter from "./signup.js";
 
-router.use("/log-in", authRouter);
-router.use("/sign-up", signupRouter);
+router.use("/auth", authRouter);
 
 /**
  * Keep this as the last to
