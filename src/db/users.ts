@@ -1,4 +1,5 @@
 import pool from "../config/database.js";
+import { keysToCamelCase } from "../utils/utility.js";
 
 export const addUser = async ({
   emailAddress,
@@ -40,13 +41,13 @@ export const getUserById = async (userId: number) => {
       WHERE id=$1;`,
     values: [userId],
   };
-  const { rows } = await pool.query<SafeUser>(getUserSQL);
+  const { rows } = await pool.query(getUserSQL);
 
   if (!rows[0]) {
     return null;
   }
 
-  return rows[0];
+  return keysToCamelCase(rows[0]) as SafeUser;
 };
 
 export const getAllUsers = async () => {
@@ -59,13 +60,13 @@ export const getAllUsers = async () => {
         is_admin,
         join_timestamp
       FROM users;`;
-  const { rows } = await pool.query<SafeUser>(getAllUsersSQL);
+  const { rows } = await pool.query(getAllUsersSQL);
 
   if (!rows[0]) {
     return null;
   }
 
-  return rows;
+  return keysToCamelCase(rows) as SafeUser;
 };
 
 export const isEmailUsed = async (email: string) => {
@@ -95,11 +96,11 @@ export const getUserByEmail = async (email: string) => {
       WHERE email_address=$1;`,
     values: [email],
   };
-  const { rows } = await pool.query<IUser>(getUserSQL);
+  const { rows } = await pool.query(getUserSQL);
 
   if (!rows[0]) {
     return null;
   }
 
-  return rows[0];
+  return keysToCamelCase(rows[0]) as IUser;
 };
