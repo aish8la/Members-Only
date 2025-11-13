@@ -29,3 +29,14 @@ export const getLogin: express.RequestHandler = (req, res) => {
   }
   res.redirect("/");
 };
+
+export const postLogout: express.RequestHandler = (req, res, next) => {
+  const authenticated = req.isAuthenticated();
+  if (!authenticated) {
+    return res.render("authentication/login");
+  }
+  req.logOut((err) => {
+    if (err) return next(err);
+    res.redirect("/auth/login");
+  });
+};
