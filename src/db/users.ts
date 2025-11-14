@@ -1,5 +1,6 @@
 import pool from "../config/database.js";
 import { keysToCamelCase } from "../utils/utility.js";
+import type { IUser, SafeUser, NewUser } from "../typings/user.js";
 
 export const addUser = async ({
   emailAddress,
