@@ -6,7 +6,7 @@
     <title>Document</title>
   </head>
   <body>
-    <form action="/log-in" method="POST">
+    <form action="/auth/login" method="POST">
       <div>
         <label for="emailAddress">Email Address</label>
         <input id="emailAddress" name="username" type="email" required />
@@ -16,7 +16,7 @@
         <input id="password" name="password" type="password" required />
       </div>
       <button type="submit">Login</button>
-      <a href="/sign-up">Signup</a>
+      <a href="/auth/signup">Signup</a>
       <% if (locals.errors) { %>
         <%= errors.message %>
       <% } %>
