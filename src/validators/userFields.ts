@@ -23,6 +23,7 @@ export const vEmail = body("username")
   .withMessage("Email is required")
   .isEmail()
   .withMessage("Email must be a valid email address")
+  .bail()
   .normalizeEmail({ all_lowercase: true })
   .custom(isEmailAvailable)
   .withMessage("User with this email already exist");
