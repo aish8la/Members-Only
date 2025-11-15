@@ -28,7 +28,7 @@ export const vEmail = body("username")
   .custom(isEmailAvailable)
   .withMessage("User with this email already exist");
 
-export const vPassword = body("password")
+export const vNewPassword = body("password")
   .matches(/^\S+$/)
   .withMessage("Must not contain spaces")
   .isLength({ min: 6, max: 25 })
