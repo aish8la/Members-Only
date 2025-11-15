@@ -1,0 +1,7 @@
+<% if (locals.formErrors) { %>
+  <ul>
+    <% Object?.entries(formErrors).forEach(([key, value]) => { %>
+      <li><%= value.msg %></li>
+    <% }); %>
+  </ul>
+<% } %>

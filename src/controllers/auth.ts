@@ -2,9 +2,14 @@ import type express from "express";
 import * as db from "../db/users.js";
 import * as argon2 from "argon2";
 import type { NewUser } from "../typings/user.js";
+import { getFormErrors } from "../utils/utility.js";
 
 export const getSignup: express.RequestHandler = (req, res) => {
-  res.render("authentication/signup");
+  const [formData, formErrors] = getFormErrors(req);
+  res.render("authentication/signup", {
+    formData,
+    formErrors,
+  });
 };
 
 export const postSignup: express.RequestHandler = async (req, res, next) => {
