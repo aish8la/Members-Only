@@ -22,7 +22,7 @@ export const vLastName = body("lastName")
   .isLength({ min: 1, max: 20 })
   .withMessage("Last Name must be between 1 and 20 characters.");
 
-export const vEmail = body("username")
+export const vEmail = body("emailAddress")
   .trim()
   .notEmpty()
   .withMessage("Email is required")
