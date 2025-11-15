@@ -8,6 +8,8 @@ export const ENV = z.object({
   NODE_ENV: z.string(),
   FALLBACK_HASH_GEN_STRING: z.string(),
   SESSION_SECRET: z.string(),
+  ADMIN_PASSWORD: z.string(),
+  MEMBER_PASSPHRASE: z.string(),
 });
 
 ENV.parse(process.env);
