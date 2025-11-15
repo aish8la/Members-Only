@@ -1,9 +1,8 @@
 import { body } from "express-validator";
 import {
   confirmPassword,
-  isAdminPassValid,
   isEmailAvailable,
-  isPassphraseValid,
+  toFalse,
 } from "./customValidators.js";
 
 export const vFirstName = body("firstName")
@@ -54,26 +53,6 @@ export const vPassword = body("password")
   .withMessage("Password is required.")
   .bail({ level: "request" });
 
-export const vIsMember = body("isMember")
-  .optional()
-  .toBoolean()
-  .if(
-    body("passphrase")
-      .exists()
-      .withMessage("Passphrase is required to become a member.")
-  )
+export const vIsMember = body("isMember").customSanitizer(toFalse);
 
-  .custom(isPassphraseValid)
-  .withMessage("Invalid Passphrase.");
-
-export const vIsAdmin = body("isAdmin")
-  .optional()
-  .toBoolean()
-  .if(
-    body("adminPassword")
-      .exists()
-      .withMessage("Admin password is required to become an admin.")
-  )
-
-  .custom(isAdminPassValid)
-  .withMessage("Invalid Admin password.");
+export const vIsAdmin = body("isAdmin").customSanitizer(toFalse);

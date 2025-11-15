@@ -6,4 +6,6 @@ export const signUpValidation = [
   user.vEmail,
   user.vNewPassword,
   user.vConfirmPassword,
+  user.vIsMember,
+  user.vIsAdmin,
 ];

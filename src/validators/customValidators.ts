@@ -1,4 +1,4 @@
-import type { CustomValidator } from "express-validator";
+import type { CustomSanitizer, CustomValidator } from "express-validator";
 import { isEmailUsed } from "../db/users.js";
 
 export const confirmPassword: CustomValidator = (value, { req }) => {
@@ -17,18 +17,6 @@ export const isEmailAvailable: CustomValidator = (value) => {
   });
 };
 
-export const isPassphraseValid: CustomValidator = ({ req }) => {
-  if (req.body?.passphrase === process.env.MEMBER_PASSPHRASE) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-export const isAdminPassValid: CustomValidator = ({ req }) => {
-  if (req.body?.adminPassword === process.env.ADMIN_PASSWORD) {
-    return true;
-  } else {
-    return false;
-  }
+export const toFalse: CustomSanitizer = () => {
+  return false;
 };
