@@ -1,3 +1,5 @@
+import type { Request } from "express";
+
 export const snakeCaseToCamelCase = (text: string) => {
   return text
     .split("_")
@@ -29,4 +31,17 @@ export const keysToCamelCase = (obj: unknown): unknown => {
     return Object.fromEntries(camelCasedEntries);
   }
   return obj;
+};
+
+export const getFormErrors = (req: Request) => {
+  const formData = req.session?.formData
+    ? structuredClone(req.session.formData)
+    : null;
+  const formErrors = req.session?.formErrors
+    ? structuredClone(req.session.formErrors)
+    : null;
+  req.session.formData = null;
+  req.session.formErrors = null;
+
+  return [formData, formErrors];
 };
