@@ -9,7 +9,10 @@ router.route("/login").get(controller.getLogin).post(middleware.authenticate);
 router
   .route("/signup")
   .get(controller.getSignup)
-  .post(setUpValidator(signUpValidation, "/signup"), controller.postSignup);
+  .post(
+    setUpValidator(signUpValidation, "/auth/signup"),
+    controller.postSignup
+  );
 router.route("/logout").post(controller.postLogout);
 
 export default router;
