@@ -34,14 +34,16 @@ export const vEmail = body("username")
   .withMessage("User with this email already exist");
 
 export const vNewPassword = body("password")
+  .notEmpty()
+  .withMessage("Must provide a password.")
   .matches(/^\S+$/)
-  .withMessage("Must not contain spaces")
+  .withMessage("Password must not contain spaces")
   .isLength({ min: 6, max: 25 })
   .withMessage("Password must be between 6 to 20 characters.")
   .hide("******");
 
 export const vConfirmPassword = body("confirmPassword")
-  .if(body("password").notEmpty())
+  .if(body("password").notEmpty({ ignore_whitespace: true }))
   .custom(confirmPassword)
   .withMessage("Confirmation Password does not match")
   .hide("******");
@@ -55,15 +57,23 @@ export const vPassword = body("password")
 export const vIsMember = body("isMember")
   .optional()
   .toBoolean()
-  .if(body("passphrase").exists())
-  .withMessage("Passphrase is required to become a member.")
+  .if(
+    body("passphrase")
+      .exists()
+      .withMessage("Passphrase is required to become a member.")
+  )
+
   .custom(isPassphraseValid)
   .withMessage("Invalid Passphrase.");
 
 export const vIsAdmin = body("isAdmin")
   .optional()
   .toBoolean()
-  .if(body("adminPassword").exists())
-  .withMessage("Admin password is required to become an admin.")
+  .if(
+    body("adminPassword")
+      .exists()
+      .withMessage("Admin password is required to become an admin.")
+  )
+
   .custom(isAdminPassValid)
   .withMessage("Invalid Admin password.");
