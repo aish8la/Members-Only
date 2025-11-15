@@ -32,9 +32,11 @@ export const vPassword = body("password")
   .matches(/^\S+$/)
   .withMessage("Must not contain spaces")
   .isLength({ min: 6, max: 25 })
-  .withMessage("Password must be between 6 to 20 characters.");
+  .withMessage("Password must be between 6 to 20 characters.")
+  .hide("******");
 
 export const vConfirmPassword = body("confirmPassword")
   .if(body("password").notEmpty())
   .custom(confirmPassword)
-  .withMessage("Confirmation Password does not match");
+  .withMessage("Confirmation Password does not match")
+  .hide("******");
