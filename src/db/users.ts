@@ -105,3 +105,15 @@ export const getUserByEmail = async (email: string) => {
 
   return keysToCamelCase(rows[0]) as IUser;
 };
+
+export const setMember = async (userId: number) => {
+  const setMemberSQL = {
+    text: `
+      UPDATE users
+      SET is_member=true
+      WHERE id=$1;`,
+    value: [userId],
+  };
+  const result = await pool.query(setMemberSQL);
+  return result;
+};
