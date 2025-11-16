@@ -112,7 +112,7 @@ export const setMember = async (userId: number) => {
       UPDATE users
       SET is_member=true
       WHERE id=$1;`,
-    value: [userId],
+    values: [userId],
   };
   const result = await pool.query(setMemberSQL);
   return result;
