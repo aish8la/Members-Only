@@ -15,3 +15,8 @@ export type NewUser = Omit<IUser, "id" | "joinTimestamp">;
 export type RegisterFormValidated = NewUser & {
   [index: string]: unknown;
 };
+
+export type UserRequestParamValidated = {
+  userId: number;
+  [index: string]: unknown;
+};
