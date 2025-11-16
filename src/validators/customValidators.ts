@@ -29,3 +29,9 @@ export const isAdminChecked: CustomValidator = async (value, { req }) => {
     return Promise.resolve(true);
   return Promise.reject("Admin password is invalid");
 };
+
+export const isCurrentUser: CustomValidator = async (value, { req }) => {
+  if (!req.user) return Promise.reject("User not logged in.");
+  if (value === req.user.id) return Promise.resolve(true);
+  return Promise.reject("Cannot modify other users.");
+};
