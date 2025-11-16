@@ -1,8 +1,10 @@
-import { body } from "express-validator";
+import { body, param } from "express-validator";
 import {
   confirmPassword,
   isAdminChecked,
+  isCurrentUser,
   isEmailAvailable,
+  isPassphraseValid,
   toFalse,
 } from "./customValidators.js";
 
@@ -57,3 +59,14 @@ export const vPassword = body("password")
 export const vIsMember = body("isMember").customSanitizer(toFalse);
 
 export const vIsAdmin = body("isAdmin").toBoolean().custom(isAdminChecked);
+
+export const visCurrentUser = param("userId")
+  .isInt()
+  .bail()
+  .custom(isCurrentUser);
+
+export const vClubPassphrase = body("passphrase")
+  .exists()
+  .withMessage("Secret passphrase required to become member")
+  .bail()
+  .custom(isPassphraseValid);
