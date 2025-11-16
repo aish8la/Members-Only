@@ -1,7 +1,7 @@
 import type express from "express";
 import * as db from "../db/users.js";
 import * as argon2 from "argon2";
-import type { NewUser } from "../typings/user.js";
+import type { RegisterFormValidated } from "../typings/user.js";
 import { getFormErrors } from "../utils/utility.js";
 
 export const getSignup: express.RequestHandler = (req, res) => {
@@ -13,10 +13,14 @@ export const getSignup: express.RequestHandler = (req, res) => {
 };
 
 export const postSignup: express.RequestHandler = async (req, res, next) => {
-  const userData = req.validatedData as NewUser;
+  const v = req.validatedData as RegisterFormValidated;
   const { rowCount } = await db.addUser({
-    ...userData,
-    password: await argon2.hash(userData.password),
+    firstName: v.firstName,
+    lastName: v.lastName,
+    emailAddress: v.emailAddress,
+    password: await argon2.hash(v.password),
+    isMember: v.isMember,
+    isAdmin: v.isAdmin,
   });
   if (rowCount !== 1) {
     const err = new Error("Something Unexpected happened");

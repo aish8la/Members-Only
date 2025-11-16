@@ -10,6 +10,8 @@ export interface IUser {
 }
 
 export type SafeUser = Omit<IUser, "password">;
-export type NewUser = Omit<IUser, "id" | "joinTimestamp"> & {
-  confirmPassword?: string;
+export type NewUser = Omit<IUser, "id" | "joinTimestamp">;
+
+export type RegisterFormValidated = NewUser & {
+  [index: string]: unknown;
 };
