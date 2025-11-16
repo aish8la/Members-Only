@@ -18,7 +18,9 @@ export const setUpValidator = (
   errorRedirect: string | RequestHandler
 ) => {
   const validationMiddleware: RequestHandler = async (req, res, next) => {
-    await Promise.all(schema.map((v) => v.run(req)));
+    for (const v of schema) {
+      await v.run(req);
+    }
     const validatedData = matchedData(req, {
       onlyValidData: true,
       includeOptionals: true,
