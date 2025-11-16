@@ -63,7 +63,8 @@ export const vIsAdmin = body("isAdmin").toBoolean().custom(isAdminChecked);
 export const visCurrentUser = param("userId")
   .isInt()
   .bail()
-  .custom(isCurrentUser);
+  .custom(isCurrentUser)
+  .bail({ level: "request" });
 
 export const vClubPassphrase = body("passphrase")
   .exists()
