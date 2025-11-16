@@ -35,3 +35,8 @@ export const isCurrentUser: CustomValidator = async (value, { req }) => {
   if (value === req.user.id) return Promise.resolve(true);
   return Promise.reject("Cannot modify other users.");
 };
+
+export const isPassphraseValid: CustomValidator = async (value) => {
+  if (value === process.env.MEMBER_PASSPHRASE) return Promise.resolve(true);
+  return Promise.reject("Passphrase is invalid.");
+};
