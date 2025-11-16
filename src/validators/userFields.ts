@@ -61,6 +61,7 @@ export const vIsMember = body("isMember").customSanitizer(toFalse);
 export const vIsAdmin = body("isAdmin").toBoolean().custom(isAdminChecked);
 
 export const visCurrentUser = param("userId")
+  .toInt()
   .isInt()
   .bail()
   .custom(isCurrentUser)
