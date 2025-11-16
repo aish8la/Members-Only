@@ -3,8 +3,10 @@ const router = express.Router();
 
 import rootRouter from "./root.js";
 import authRouter from "./auth.js";
+import userRouter from "./user.js";
 
 router.use("/auth", authRouter);
+router.use("/user", userRouter);
 
 /**
  * Keep this as the last to
