@@ -5,6 +5,7 @@ import type {
   CheckFunctionObject,
 } from "./authTypes.js";
 import passport from "passport";
+import { ForbiddenError } from "../errors/customErrors.js";
 
 export const authenticate: RequestHandler = async (req, res, next) => {
   const passportAuthenticateCb: passport.AuthenticateCallback = (
@@ -53,7 +54,7 @@ export const checkAuthStatus = () => {
         return fn.failHandler(req, res, next);
       }
 
-      const err = new Error("Not Authorized");
+      const err = new ForbiddenError();
       return next(err);
     }
     return next();
@@ -66,7 +67,9 @@ export const checkAuthStatus = () => {
       return isMember;
     };
     const failHandler: RequestHandler = (req, res, next) => {
-      const err = new Error("Not a member");
+      const err = new ForbiddenError(
+        "Membership is required to access this resource"
+      );
       next(err);
     };
     checks.push({ checkFn, failHandler });
@@ -79,7 +82,7 @@ export const checkAuthStatus = () => {
       return isAdmin;
     };
     const failHandler: RequestHandler = (req, res, next) => {
-      const err = new Error("Not Authorized");
+      const err = new Error("You are not authorized to access this resource");
       next(err);
     };
     checks.push({ checkFn, failHandler });
