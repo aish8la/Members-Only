@@ -14,7 +14,7 @@ export class UnauthorizedError extends Error {
   readonly statusCode: number;
   readonly isOperational: boolean;
 
-  constructor(message: string) {
+  constructor(message?: string) {
     super(message || "Authentication is required.");
     this.statusCode = 401;
     this.isOperational = true;
@@ -26,7 +26,7 @@ export class ForbiddenError extends Error {
   readonly statusCode: number;
   readonly isOperational: boolean;
 
-  constructor(message: string) {
+  constructor(message?: string) {
     super(message || "You do not have permission to access this resource.");
     this.statusCode = 403;
     this.isOperational = true;
