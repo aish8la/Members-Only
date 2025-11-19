@@ -40,8 +40,12 @@ export const getFormErrors = (req: Request) => {
   const formErrors = req.session?.formErrors
     ? structuredClone(req.session.formErrors)
     : null;
+  const roleValidationErrors = req.session?.roleValidationErrors
+    ? structuredClone(req.session.roleValidationErrors)
+    : null;
   req.session.formData = null;
   req.session.formErrors = null;
+  req.session.roleValidationErrors = null;
 
-  return [formData, formErrors];
+  return [formData, formErrors, roleValidationErrors];
 };

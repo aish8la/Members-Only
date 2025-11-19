@@ -20,3 +20,7 @@ export type UserRequestParamValidated = {
   userId: number;
   [index: string]: unknown;
 };
+
+export type RequestAdminPromotion = Pick<IUser, "isAdmin"> & {
+  [index: string]: unknown;
+};

@@ -5,10 +5,11 @@ import type { RegisterFormValidated } from "../typings/user.js";
 import { getFormErrors } from "../utils/utility.js";
 
 export const getSignup: express.RequestHandler = (req, res) => {
-  const [formData, formErrors] = getFormErrors(req);
+  const [formData, formErrors, roleValidationErrors] = getFormErrors(req);
   res.render("authentication/signup", {
     formData,
     formErrors,
+    roleValidationErrors,
   });
 };
 

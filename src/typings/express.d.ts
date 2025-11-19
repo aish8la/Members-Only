@@ -13,5 +13,9 @@ declare module "express-session" {
   interface SessionData {
     formErrors?: unknown;
     formData?: unknown;
+    roleValidationErrors?: {
+      adminValidation?: string;
+      memberValidation?: string;
+    } | null;
   }
 }
