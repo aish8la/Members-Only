@@ -5,7 +5,7 @@ import type {
 } from "../typings/user.js";
 import { UnauthorizedError } from "../errors/customErrors.js";
 
-export const isNewAdmin = (redirect?: string) => {
+export const checkAdminPassword = (redirect?: string) => {
   const validateNewAdmin: RequestHandler = (req, res, next) => {
     const v = req?.validatedData as RequestAdminPromotion;
     if (!v.isAdmin) {
@@ -36,7 +36,7 @@ export const isNewAdmin = (redirect?: string) => {
   return validateNewAdmin;
 };
 
-export const isNewMember = (redirect?: string) => {
+export const checkClubPassword = (redirect?: string) => {
   const validateNewMember: RequestHandler = (req, res, next) => {
     const v = req.validatedData as RequestMembership;
     if (process.env.MEMBER_PASSPHRASE === v.passphrase) {
