@@ -6,6 +6,7 @@ import passport from "passport";
 import session from "./config/session.js";
 import { localStrategy } from "./config/passportConfig.js";
 import router from "./routes/index.js";
+import { errorMiddleware } from "./middleware/error.js";
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -19,6 +20,7 @@ passport.use(localStrategy);
 app.use(session);
 app.use(passport.session());
 app.use(router);
+app.use(errorMiddleware);
 
 const PORT = Number(process.env.PORT) || 3000;
 
