@@ -1,6 +1,16 @@
 import type { RequestHandler } from "express";
 import { setMember } from "../db/users.js";
 import { BadRequestError, UnauthorizedError } from "../errors/customErrors.js";
+import { getFormErrors } from "../utils/utility.js";
+
+export const getUserJoin: RequestHandler = (req, res) => {
+  const [formData, formErrors, roleValidationErrors] = getFormErrors(req);
+  res.render("user/joinClub", {
+    formData,
+    formErrors,
+    roleValidationErrors,
+  });
+};
 
 export const postUserJoin: RequestHandler = async (req, res, next) => {
   if (!req?.user) {

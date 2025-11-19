@@ -24,3 +24,7 @@ export type UserRequestParamValidated = {
 export type RequestAdminPromotion = Pick<IUser, "isAdmin"> & {
   [index: string]: unknown;
 };
+
+export type RequestMembership = {
+  passphrase: string;
+};
