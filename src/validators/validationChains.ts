@@ -8,6 +8,7 @@ export const signUpValidation = [
   user.vConfirmPassword,
   user.vIsMember,
   user.vIsAdmin,
+  user.vAdminPassword,
 ];
 
 export const joinClubValidation = [user.visCurrentUser, user.vClubPassphrase];

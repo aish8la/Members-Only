@@ -59,6 +59,11 @@ export const vIsMember = body("isMember").customSanitizer(toFalse);
 
 export const vIsAdmin = body("isAdmin").toBoolean();
 
+export const vAdminPassword = body("adminPassword")
+  .if(body("isAdmin").exists({ values: "falsy" }))
+  .notEmpty()
+  .withMessage("Administrator Password is required to become an administrator");
+
 export const visCurrentUser = param("userId")
   .toInt()
   .isInt()

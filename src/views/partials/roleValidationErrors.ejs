@@ -1,0 +1,7 @@
+<% if (locals.roleValidationErrors) { %>
+  <ul>
+    <% Object?.entries(roleValidationErrors).forEach(([key, value]) => { %>
+      <li><%= value %></li>
+    <% }); %>
+  </ul>
+<% } %>
