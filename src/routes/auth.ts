@@ -12,7 +12,7 @@ router
   .get(controller.getSignup)
   .post(
     setUpValidator(signUpValidation, "/auth/signup"),
-    isNewAdmin("/signup"),
+    isNewAdmin("/auth/signup"),
     controller.postSignup
   );
 router.route("/logout").post(controller.postLogout);
