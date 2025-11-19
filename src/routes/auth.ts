@@ -3,6 +3,7 @@ import * as controller from "../controllers/auth.js";
 import * as middleware from "../middleware/auth.js";
 import { setUpValidator } from "../middleware/validate.js";
 import { signUpValidation } from "../validators/validationChains.js";
+import { isNewAdmin } from "../middleware/roleValidation.js";
 const router = express.Router();
 
 router.route("/login").get(controller.getLogin).post(middleware.authenticate);
@@ -11,6 +12,7 @@ router
   .get(controller.getSignup)
   .post(
     setUpValidator(signUpValidation, "/auth/signup"),
+    isNewAdmin("/signup"),
     controller.postSignup
   );
 router.route("/logout").post(controller.postLogout);

@@ -21,15 +21,6 @@ export const toFalse: CustomSanitizer = () => {
   return false;
 };
 
-export const isAdminChecked: CustomValidator = async (value, { req }) => {
-  if (!value) return Promise.resolve(true);
-  if (!req.body?.adminPassword)
-    return Promise.reject("Admin Password is required.");
-  if (req.body.adminPassword === process.env.ADMIN_PASSWORD)
-    return Promise.resolve(true);
-  return Promise.reject("Admin password is invalid");
-};
-
 export const isCurrentUser: CustomValidator = async (value, { req }) => {
   if (!req.user) return Promise.reject("User not logged in.");
   if (value === req.user.id) return Promise.resolve(true);
