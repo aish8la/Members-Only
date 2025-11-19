@@ -33,3 +33,15 @@ export class ForbiddenError extends Error {
     this.name = "Forbidden";
   }
 }
+
+export class BadRequestError extends Error {
+  readonly statusCode: number;
+  readonly isOperational: boolean;
+
+  constructor(message?: string) {
+    super(message || "Your request is malformed or invalid.");
+    this.statusCode = 400;
+    this.isOperational = true;
+    this.name = "BadRequest";
+  }
+}

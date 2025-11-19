@@ -20,14 +20,3 @@ export const isEmailAvailable: CustomValidator = (value) => {
 export const toFalse: CustomSanitizer = () => {
   return false;
 };
-
-export const isCurrentUser: CustomValidator = async (value, { req }) => {
-  if (!req.user) return Promise.reject("User not logged in.");
-  if (value === req.user.id) return Promise.resolve(true);
-  return Promise.reject("Cannot modify other users.");
-};
-
-export const isPassphraseValid: CustomValidator = async (value) => {
-  if (value === process.env.MEMBER_PASSPHRASE) return Promise.resolve(true);
-  return Promise.reject("Passphrase is invalid.");
-};

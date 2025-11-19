@@ -5,7 +5,7 @@ import { joinClubValidation } from "../validators/validationChains.js";
 const router = express.Router();
 
 router
-  .route("/:userId/join")
+  .route("/join")
   .post(setUpValidator(joinClubValidation, "/"), postUserJoin);
 
 export default router;

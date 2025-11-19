@@ -1,9 +1,7 @@
-import { body, param } from "express-validator";
+import { body } from "express-validator";
 import {
   confirmPassword,
-  isCurrentUser,
   isEmailAvailable,
-  isPassphraseValid,
   toFalse,
 } from "./customValidators.js";
 
@@ -64,15 +62,6 @@ export const vAdminPassword = body("adminPassword")
   .notEmpty()
   .withMessage("Administrator Password is required to become an administrator");
 
-export const visCurrentUser = param("userId")
-  .toInt()
-  .isInt()
-  .bail()
-  .custom(isCurrentUser)
-  .bail({ level: "request" });
-
 export const vClubPassphrase = body("passphrase")
-  .exists()
-  .withMessage("Secret passphrase required to become member")
-  .bail()
-  .custom(isPassphraseValid);
+  .notEmpty()
+  .withMessage("Secret passphrase required to become member");
