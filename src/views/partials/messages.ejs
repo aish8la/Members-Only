@@ -11,6 +11,7 @@
       <div>
         <div>
           <%= currentUser?.isMember ? message.firstName + (message.lastName ? " " + message.lastName : "" ) : "*****" %>
+          <%= currentUser?.isMember ? formatDistanceToNowStrict(message.createdTimestamp, {addSuffix: true}) : "*****" %>
         </div>
         <%= message.message %>
       </div>
