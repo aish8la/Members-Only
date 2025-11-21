@@ -1,14 +1,16 @@
-import * as user from "./userFields.js";
+import * as chain from "./inputFields.js";
 
 export const signUpValidation = [
-  user.vFirstName,
-  user.vLastName,
-  user.vEmail,
-  user.vNewPassword,
-  user.vConfirmPassword,
-  user.vIsMember,
-  user.vIsAdmin,
-  user.vAdminPassword,
+  chain.vFirstName,
+  chain.vLastName,
+  chain.vEmail,
+  chain.vNewPassword,
+  chain.vConfirmPassword,
+  chain.vIsMember,
+  chain.vIsAdmin,
+  chain.vAdminPassword,
 ];
 
-export const joinClubValidation = [user.vClubPassphrase];
+export const joinClubValidation = [chain.vClubPassphrase];
+
+export const newMessageValidation = [chain.vMessage];

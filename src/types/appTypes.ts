@@ -36,6 +36,8 @@ export interface IMessage {
   createdTimestamp: Date;
 }
 
-export type NewMessage = Omit<IMessage, "messageId" | "createdTimestamp">;
+export type NewMessage = Omit<IMessage, "id" | "createdTimestamp">;
 
 export type MessageData = SafeUser & IMessage;
+
+export type MessageFormValidated = Omit<NewMessage, "authorId">;

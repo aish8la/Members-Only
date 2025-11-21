@@ -65,3 +65,8 @@ export const vAdminPassword = body("adminPassword")
 export const vClubPassphrase = body("passphrase")
   .notEmpty()
   .withMessage("Secret passphrase required to become member");
+
+export const vMessage = body("message")
+  .trim()
+  .isLength({ min: 1, max: 2000 })
+  .withMessage("Message must be between 1 and 2000 characters long.");
