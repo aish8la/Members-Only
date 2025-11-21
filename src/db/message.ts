@@ -1,5 +1,5 @@
 import pool from "../config/database.js";
-import type { MessageData, NewMessage } from "../types/appTypes.js";
+import type { IMessage, MessageData, NewMessage } from "../types/appTypes.js";
 import { keysToCamelCase } from "../utils/utility.js";
 
 export const addMessage = async ({ authorId, message }: NewMessage) => {
@@ -29,4 +29,13 @@ export const getAllMessages = async () => {
   const { rows } = await pool.query(getAllSQL);
   if (!rows) return null;
   return keysToCamelCase(rows) as MessageData;
+};
+
+export const deleteMessage = async (messageId: IMessage["id"]) => {
+  const deleteMessageSQL = {
+    text: `DELETE FROM messages
+            WHERE id=$1`,
+    values: [messageId],
+  };
+  return await pool.query(deleteMessageSQL);
 };
