@@ -28,3 +28,14 @@ export type RequestAdminPromotion = Pick<IUser, "isAdmin"> & {
 export type RequestMembership = {
   passphrase: string;
 };
+
+export interface IMessage {
+  id: number;
+  authorId: IUser["id"];
+  message: string;
+  createdTimestamp: Date;
+}
+
+export type NewMessage = Omit<IMessage, "messageId" | "createdTimestamp">;
+
+export type MessageData = SafeUser & IMessage;
