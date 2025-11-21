@@ -1,7 +1,7 @@
 import type express from "express";
 import * as db from "../db/users.js";
 import * as argon2 from "argon2";
-import type { RegisterFormValidated } from "../typings/user.js";
+import type { RegisterFormValidated } from "../types/appTypes.js";
 import { getFormErrors } from "../utils/utility.js";
 
 export const getSignup: express.RequestHandler = (req, res) => {

@@ -2,7 +2,7 @@ import type { RequestHandler } from "express";
 import type {
   RequestAdminPromotion,
   RequestMembership,
-} from "../typings/user.js";
+} from "../types/appTypes.js";
 import { UnauthorizedError } from "../errors/customErrors.js";
 
 export const checkAdminPassword = (redirect?: string) => {

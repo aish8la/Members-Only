@@ -1,6 +1,6 @@
 import { Strategy } from "passport-local";
 import { getUserByEmail, getUserById } from "../db/users.js";
-import type { SafeUser } from "../typings/user.js";
+import type { SafeUser } from "../types/appTypes.js";
 import * as argon2 from "argon2";
 import passport from "passport";
 
