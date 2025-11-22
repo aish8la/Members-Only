@@ -23,6 +23,7 @@ router
     checkAuthStatus().isAdmin(),
     setUpValidator(messageIdValidation, notFoundError)
   )
-  .get(messageControllers.getDelete);
+  .get(messageControllers.getDelete)
+  .post(messageControllers.postDelete);
 
 export default router;

@@ -46,3 +46,13 @@ export const getDelete: RequestHandler = async (req, res) => {
     path: req.baseUrl + "/" + v.messageId + "/delete",
   });
 };
+
+export const postDelete: RequestHandler = async (req, res, next) => {
+  const v = req.validatedData as MessageIdValidated;
+  const { rowCount } = await db.deleteMessage(v.messageId);
+  if (rowCount !== 1) {
+    const err = new Error("Something Unexpected happened");
+    return next(err);
+  }
+  return res.redirect("/");
+};
