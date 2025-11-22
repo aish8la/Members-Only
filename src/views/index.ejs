@@ -6,6 +6,8 @@
     <title>Document</title>
   </head>
   <body>
+    <%- include("./partials/layout/header.ejs", {isHome: true}) %>
+    <%- include("./partials/loginNotice.ejs") %>
     <%- include("./partials/messages.ejs") %>
   </body>
 </html>

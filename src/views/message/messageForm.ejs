@@ -6,6 +6,7 @@
     <title>New</title>
   </head>
   <body>
+      <%- include("../partials/layout/header.ejs") %>
     <form action="/message/new" method="POST">
       <h2><%= title %></h2>
       <%- include("../partials/formErrors.ejs") %>

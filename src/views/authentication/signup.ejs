@@ -6,6 +6,7 @@
     <title>Document</title>
   </head>
   <body>
+    <%- include("../partials/layout/header.ejs") %>
     <form action="/auth/signup" method="POST">
       <%- include("../partials/formErrors.ejs") %> <%-
       include("../partials/roleValidationErrors.ejs") %>
