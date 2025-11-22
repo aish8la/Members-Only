@@ -89,7 +89,9 @@ export const checkAuthStatus = () => {
       return isAdmin;
     };
     const failHandler: RequestHandler = (req, res, next) => {
-      const err = new Error("You are not authorized to access this resource");
+      const err = new ForbiddenError(
+        "You are not authorized to access this resource"
+      );
       next(err);
     };
     checks.push({ checkFn, failHandler });
