@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New</title>
+  </head>
+  <body>
+    <form action="/message/new" method="POST">
+      <h2><%= title %></h2>
+      <%- include("../partials/formErrors.ejs") %>
+      <div>
+        <label for="message">Message:</label>
+        <textarea
+          minlength="1"
+          maxlength="2000"
+          name="message"
+          id="message"
+        ></textarea>
+      </div>
+      <button type="button" onclick="history.back(); return false">
+        Cancel
+      </button>
+      <button type="submit">Post</button>
+    </form>
+  </body>
+</html>

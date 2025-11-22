@@ -5,9 +5,11 @@ const router = express.Router();
 import rootRouter from "./root.js";
 import authRouter from "./auth.js";
 import userRouter from "./user.js";
+import messageRouter from "./message.js";
 
 router.use("/auth", authRouter);
 router.use("/user", checkAuthStatus(), userRouter);
+router.use("/message", messageRouter);
 
 /**
  * Keep this as the last to
