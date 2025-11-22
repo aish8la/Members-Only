@@ -28,7 +28,7 @@ export const getAllMessages = async () => {
 
   const { rows } = await pool.query(getAllSQL);
   if (!rows[0]) return null;
-  return keysToCamelCase(rows) as MessageData;
+  return keysToCamelCase(rows) as MessageData[];
 };
 
 export const deleteMessage = async (messageId: IMessage["id"]) => {
