@@ -1,26 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <% if(locals.messages) {%>
-    <% messages.forEach(message => {%>
+<% if(locals.messages) {%>
+  <% messages.forEach(message => {%>
+    <div>
       <div>
-        <div>
-          <%= currentUser?.isMember ? message.firstName + (message.lastName ? " " + message.lastName : "" ) : "*****" %>
-          <%= currentUser?.isMember ? formatDistanceToNowStrict(message.createdTimestamp, {addSuffix: true}) : "*****" %>
-        </div>
-        <%= message.message %>
-        <div>
-          <% if(currentUser?.isAdmin) {%>
-            <a href="/message/<%= message.id%>/delete">Delete</a>
-          <% } %>
-        </div>
+        <%= currentUser?.isMember ? message.firstName + (message.lastName ? " " + message.lastName : "" ) : "*****" %>
+        <%= currentUser?.isMember ? formatDistanceToNowStrict(message.createdTimestamp, {addSuffix: true}) : "*****" %>
       </div>
-    <%})%>
-  <% } %>
-</body>
-</html>
+      <%= message.message %>
+      <div>
+        <% if(currentUser?.isAdmin) {%>
+          <a href="/message/<%= message.id%>/delete">Delete</a>
+        <% } %>
+      </div>
+    </div>
+  <%})%>
+<% } %>
