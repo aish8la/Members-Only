@@ -38,6 +38,13 @@ export const authenticate: RequestHandler = async (req, res, next) => {
   authenticateFb(req, res, next);
 };
 
+/**
+ *
+ * A function that returns a middleware that checks if a user is logged in.
+ * The returned middleware can also be chained with a `isAdmin()` or `isMember()` to check further if the user is an admin or member.
+ *
+ * @returns RequestHandler
+ */
 export const checkAuthStatus = () => {
   const checks: CheckFunctionObject[] = [];
   const middleware: AuthMiddleware = (req, res, next) => {
