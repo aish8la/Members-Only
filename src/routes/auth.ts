@@ -15,6 +15,6 @@ router
     checkAdminPassword("/auth/signup"),
     controller.postSignup
   );
-router.route("/logout").post(controller.postLogout);
+router.route("/logout").get(controller.getLogout);
 
 export default router;
