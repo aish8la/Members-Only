@@ -14,3 +14,5 @@ export const signUpValidation = [
 export const joinClubValidation = [chain.vClubPassphrase];
 
 export const newMessageValidation = [chain.vMessage];
+
+export const messageIdValidation = [chain.vMessagePath];

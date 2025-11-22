@@ -1,4 +1,5 @@
-import type { ErrorRequestHandler } from "express";
+import type { ErrorRequestHandler, RequestHandler } from "express";
+import { NotFoundError } from "../errors/customErrors.js";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const errorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
@@ -24,4 +25,9 @@ export const errorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
   return res.status(err.statusCode).render("error", {
     error: err,
   });
+};
+
+export const notFoundError: RequestHandler = (req, res, next) => {
+  const notFound = new NotFoundError();
+  next(notFound);
 };

@@ -1,7 +1,8 @@
-import { body } from "express-validator";
+import { body, param } from "express-validator";
 import {
   confirmPassword,
   isEmailAvailable,
+  messageExists,
   toFalse,
 } from "./customValidators.js";
 
@@ -70,3 +71,9 @@ export const vMessage = body("message")
   .trim()
   .isLength({ min: 1, max: 2000 })
   .withMessage("Message must be between 1 and 2000 characters long.");
+
+export const vMessagePath = param("messageId")
+  .isInt()
+  .withMessage("Invalid Param")
+  .bail()
+  .custom(messageExists);

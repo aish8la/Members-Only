@@ -1,6 +1,9 @@
 import type { RequestHandler } from "express";
 import * as db from "../db/message.js";
-import type { MessageFormValidated } from "../types/appTypes.js";
+import type {
+  MessageFormValidated,
+  MessageIdValidated,
+} from "../types/appTypes.js";
 import { UnauthorizedError } from "../errors/customErrors.js";
 import { getFormErrors } from "../utils/utility.js";
 
@@ -33,4 +36,13 @@ export const postNew: RequestHandler = async (req, res, next) => {
     return next(err);
   }
   res.redirect("/");
+};
+
+export const getDelete: RequestHandler = async (req, res) => {
+  const v = req.validatedData as MessageIdValidated;
+  res.render("confirmDelete", {
+    title: "Delete Message",
+    prompt: "Are you sure you want to delete this message ?",
+    path: req.baseUrl + "/" + v.messageId + "/delete",
+  });
 };

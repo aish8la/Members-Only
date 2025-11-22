@@ -41,3 +41,8 @@ export type NewMessage = Omit<IMessage, "id" | "createdTimestamp">;
 export type MessageData = SafeUser & IMessage;
 
 export type MessageFormValidated = Omit<NewMessage, "authorId">;
+
+export type MessageIdValidated = {
+  messageId: IMessage["id"];
+  [index: string]: unknown;
+};

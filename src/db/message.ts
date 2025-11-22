@@ -27,7 +27,7 @@ export const getAllMessages = async () => {
     ORDER BY m.created_timestamp, m.id;`;
 
   const { rows } = await pool.query(getAllSQL);
-  if (!rows) return null;
+  if (!rows[0]) return null;
   return keysToCamelCase(rows) as MessageData;
 };
 
@@ -38,4 +38,15 @@ export const deleteMessage = async (messageId: IMessage["id"]) => {
     values: [messageId],
   };
   return await pool.query(deleteMessageSQL);
+};
+
+export const getMessageById = async (messageId: IMessage["id"]) => {
+  const getMessageSQL = {
+    text: `
+    SELECT * FROM messages WHERE id=$1`,
+    values: [messageId],
+  };
+  const { rows } = await pool.query(getMessageSQL);
+  if (!rows[0]) return null;
+  return rows[0];
 };
