@@ -1,16 +1,26 @@
-<% if(locals.messages) {%>
-  <% messages.forEach(message => {%>
-    <div>
-      <div>
-        <%= currentUser?.isMember ? message.firstName + (message.lastName ? " " + message.lastName : "" ) : "*****" %>
-        <%= currentUser?.isMember ? formatDistanceToNowStrict(message.createdTimestamp, {addSuffix: true}) : "*****" %>
+<div class="message-container">
+  <% if(locals.messages) {%>
+    <% messages.forEach(message => {%>
+      <div class="card">
+        <div class="card-header">
+          <%- include("../icons/user.ejs") %>
+          <div class="card-text-container">
+            <div class="card-username">
+              <%= currentUser?.isMember ? message.firstName + (message.lastName ? " " + message.lastName : "" ) : "*****" %>
+            </div>
+            <div class="card-time">
+              <%= currentUser?.isMember ? formatDistanceToNowStrict(message.createdTimestamp, {addSuffix: true}) : "*****" %>
+            </div>
+          </div>
+        </div>
+        <%= message.message %>
+        <div class="card-footer">
+          <% if(currentUser?.isAdmin) {%>
+            <a class="danger-btn" href="/message/<%= message.id%>/delete">Delete</a>
+          <% } %>
+        </div>
       </div>
-      <%= message.message %>
-      <div>
-        <% if(currentUser?.isAdmin) {%>
-          <a href="/message/<%= message.id%>/delete">Delete</a>
-        <% } %>
-      </div>
-    </div>
-  <%})%>
-<% } %>
+    <%})%>
+  <% } %>
+
+</div>
