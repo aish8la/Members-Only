@@ -13,7 +13,7 @@ router
   .post(
     setUpValidator(signUpValidation, "/auth/signup"),
     checkAdminPassword("/auth/signup"),
-    controller.postSignup
+    controller.postSignup,
   );
 router.route("/logout").get(controller.getLogout);
 

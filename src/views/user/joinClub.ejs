@@ -3,17 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/global.css">
     <title>Join Club</title>
   </head>
   <body>
     <%- include("../partials/layout/header.ejs") %>
-    <form action="/user/join" method="POST">
-      <h1>Join the club</h1>
-      <%- include("../partials/formErrors.ejs") %> <%-
-      include("../partials/roleValidationErrors.ejs") %>
-      <label for="passphrase"> Passphrase: </label>
-      <input type="password" required name="passphrase" id="passphrase" />
-      <button type="submit">Join</button>
-    </form>
+    <main>
+      <form action="/user/join" method="POST">
+        <div class="form-card">
+          <h2>Join the club</h2>
+          <%- include("../partials/formErrors.ejs") %>
+          <%- include("../partials/roleValidationErrors.ejs") %>
+          <div>
+            <label for="passphrase"> Passphrase: </label>
+            <input class="form-input" type="password" required name="passphrase" id="passphrase" />
+          </div>
+          <button class="cte-btn" type="submit">Join</button>
+        </div>
+      </form>
+    </main>
   </body>
 </html>

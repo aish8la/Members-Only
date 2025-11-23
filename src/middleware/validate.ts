@@ -15,7 +15,7 @@ import {
  */
 export const setUpValidator = (
   schema: ValidationChain[],
-  errorRedirect: string | RequestHandler
+  errorRedirect: string | RequestHandler,
 ) => {
   const validationMiddleware: RequestHandler = async (req, res, next) => {
     for (const v of schema) {

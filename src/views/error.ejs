@@ -3,14 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/global.css">
     <title>Error</title>
   </head>
   <body>
     <%- include("./partials/layout/header.ejs") %>
-    <div>
-      <h1><%= error.statusCode || 500 %></h1>
-      <p><%= error.message || "Server Error" %></p>
-      <a href="/">Return to Homepage</a>
-    </div>
+    <main>
+      <div class="error-body">
+        <h1 class="error-title"><%= error.statusCode || 500 %></h1>
+        <p class="error-message"><%= error.message || "Server Error" %></p>
+        <a class="btn" href="/">Return to Homepage</a>
+      </div>
+    </main>
   </body>
 </html>

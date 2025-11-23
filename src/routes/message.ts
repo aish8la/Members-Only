@@ -14,14 +14,14 @@ router
   .get(messageControllers.getNew)
   .post(
     setUpValidator(newMessageValidation, "/message/new"),
-    messageControllers.postNew
+    messageControllers.postNew,
   );
 
 router
   .route("/:messageId/delete")
   .all(
     checkAuthStatus().isAdmin(),
-    setUpValidator(messageIdValidation, notFoundError)
+    setUpValidator(messageIdValidation, notFoundError),
   )
   .get(messageControllers.getDelete)
   .post(messageControllers.postDelete);

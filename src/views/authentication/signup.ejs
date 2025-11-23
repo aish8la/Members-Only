@@ -3,39 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <title>Sign up</title>
   </head>
   <body>
     <%- include("../partials/layout/header.ejs") %>
-    <form action="/auth/signup" method="POST">
-      <%- include("../partials/formErrors.ejs") %> <%-
-      include("../partials/roleValidationErrors.ejs") %>
-      <div>
-        <label for="firstName">First Name</label>
-        <input id="firstName" name="firstName" type="text" required />
-      </div>
-      <div>
-        <label for="lastName">Last Name</label>
-        <input id="lastName" name="lastName" type="text" />
-      </div>
-      <div>
-        <label for="emailAddress">Email Address</label>
-        <input id="emailAddress" name="emailAddress" type="email" required />
-      </div>
-      <div>
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" required />
-      </div>
-      <div>
-        <label for="confirmPassword">Confirm Password</label>
-        <input
-          id="confirmPassword"
-          name="confirmPassword"
-          type="password"
-          required
-        />
-      </div>
-      <button type="submit">Signup</button>
-    </form>
+    <main>
+      <form action="/auth/signup" method="POST">
+        <div class="form-card">
+          <%- include("../partials/formErrors.ejs") %> <%-
+          include("../partials/roleValidationErrors.ejs") %>
+          <div>
+            <label for="firstName">First Name</label>
+            <input class="form-input" id="firstName" name="firstName" type="text" required />
+          </div>
+          <div>
+            <label for="lastName">Last Name</label>
+            <input class="form-input" id="lastName" name="lastName" type="text" />
+          </div>
+          <div>
+            <label for="emailAddress">Email Address</label>
+            <input class="form-input" id="emailAddress" name="emailAddress" type="email" required />
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input class="form-input" id="password" name="password" type="password" required />
+          </div>
+          <div>
+            <label for="confirmPassword">Confirm Password</label>
+            <input class="form-input"
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              required
+            />
+          </div>
+          <button class="cte-btn" type="submit">Signup</button>
+
+        </div>
+      </form>
+    </main>
   </body>
 </html>

@@ -11,7 +11,7 @@ router
   .post(
     setUpValidator(joinClubValidation, "/user/join"),
     checkClubPassword("/user/join"),
-    postUserJoin
+    postUserJoin,
   );
 
 export default router;

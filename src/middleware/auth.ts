@@ -11,7 +11,7 @@ export const authenticate: RequestHandler = async (req, res, next) => {
   const passportAuthenticateCb: passport.AuthenticateCallback = (
     err,
     user,
-    info
+    info,
   ) => {
     if (err) return next(err);
     if (!user) {
@@ -75,7 +75,7 @@ export const checkAuthStatus = () => {
     };
     const failHandler: RequestHandler = (req, res, next) => {
       const err = new ForbiddenError(
-        "Membership is required to access this resource"
+        "Membership is required to access this resource",
       );
       next(err);
     };
@@ -90,7 +90,7 @@ export const checkAuthStatus = () => {
     };
     const failHandler: RequestHandler = (req, res, next) => {
       const err = new ForbiddenError(
-        "You are not authorized to access this resource"
+        "You are not authorized to access this resource",
       );
       next(err);
     };

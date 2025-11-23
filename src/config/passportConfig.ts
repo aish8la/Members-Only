@@ -21,7 +21,7 @@ export const localStrategy = new Strategy(
     } catch (err) {
       return done(err);
     }
-  }
+  },
 );
 
 passport.serializeUser((user: SafeUser, done) => {
