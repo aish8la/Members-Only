@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: hsl(0, 0%, 5%);
+  --bg-light: hsl(0, 0%, 10%);
+  --text: hsl(0, 0%, 95%);
+  --text-muted: hsl(0, 0%, 70%);
+  --accent30: hsl(150, 80%, 30%);
+  --accent20: hsl(150, 80%, 20%);
+  --danger: hsl(10, 100%, 50%);
+  --ff: "Inter", sans-serif;
+  --ff2: "Noto Sans", sans-serif;
+  --p: 1rem / 1.5rem var(--ff);
+  --h1: 600 3rem / 1.2rem var(--ff2);
+  --h2: 600 2rem / 1.2rem var(--ff2);
+  --spacing1: 4px;
+  --spacing2: 8px;
+  --spacing3: 16px;
+  --spacing4: 20px;
+  --spacing5: 20px;
+  --spacing6: 40px;
+  --spacing7: 80px;
+  --spacing8: 160px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-muted);
+  font: var(--p);
+  min-height: 100vh;
+}
+
+h1 {
+  font: var(--h1);
+  color: var(--text);
+}
+h {
+  font: var(--h2);
+  color: var(--text);
+}
+a {
+  color: var(--text);
+  text-decoration: none;
+  transition: all 300ms ease-in-out;
+  &:hover {
+    color: var(--accent30);
+  }
+}
+
+.btn,
+button {
+  all: unset;
+  background-color: var(--bg-light);
+  color: var(--text);
+  padding: var(--spacing2) var(--spacing3);
+  border-radius: var(--spacing2);
+  transition: all 300ms ease-in-out;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.cte-btn {
+  all: unset;
+  background-color: var(--accent30);
+  color: var(--text);
+  padding: var(--spacing2) var(--spacing3);
+  border-radius: var(--spacing2);
+  transition: all 300ms ease-in-out;
+  &:hover {
+    cursor: pointer;
+    color: var(--text);
+    background-color: var(--accent20);
+  }
+}
+
+header {
+  padding: var(--spacing4) 0;
+  width: 90%;
+  max-width: 1080px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+main {
+  width: 90%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.toast {
+  padding: var(--spacing2) var(--spacing3);
+  margin: var(--spacing2) 0;
+  text-align: center;
+  border-radius: var(--spacing2);
+  border: 1px solid var(--accent20);
+  color: var(--accent20);
+  & > a {
+    color: var(--accent30);
+    &:hover {
+      color: var(--text);
+    }
+  }
+}

@@ -1,14 +1,16 @@
 <header>
   <h1><a href="/">Members Only</a></h1>
   <% if (locals?.isHome) {%>
-    <% if(!locals.currentUser) {%>
-      <a href="/auth/login">Login</a>
-      <a href="/auth/signup">Sign up</a>
-    <%} else { %>
-      <a href="/auth/logout">Logout</a>
-      <% if (!currentUser?.isMember) {%>
-        <a href="/user/join">Join Club</a>  
+    <div>
+      <% if(!locals.currentUser) {%>
+        <a class="cte-btn" href="/auth/login">Login</a>
+        <a class="btn" href="/auth/signup">Sign up</a>
+      <%} else { %>
+        <a class="btn" href="/auth/logout">Logout</a>
+        <% if (!currentUser?.isMember) {%>
+          <a class="cte-btn" href="/user/join">Join Club</a>  
+        <%}%>
       <%}%>
-    <%}%>
+    </div>
   <%}%>
 </header>
