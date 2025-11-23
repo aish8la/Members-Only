@@ -13,7 +13,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prebuild": "rm -rf dist",
+    "build": "tsc",
+    "postbuild": "cp -r src/views dist/views && cp -r src/public dist/public"
   },
   "repository": {
     "type": "git",
