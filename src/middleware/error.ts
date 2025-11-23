@@ -28,6 +28,7 @@ export const errorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
 };
 
 export const notFoundError: RequestHandler = (req, res, next) => {
+  if (res.headersSent) return;
   const notFound = new NotFoundError();
   next(notFound);
 };
